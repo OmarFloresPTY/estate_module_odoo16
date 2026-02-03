@@ -1,0 +1,30 @@
+<odoo>
+    <!-- App -->
+    <menuitem id="estate_menu_root" name="Estate"/>
+
+    <!-- Tab horizontal -->
+    <menuitem id="estate_menu_config"
+              name="Advertisements"
+              parent="estate_menu_root"/>
+    
+    <!-- Odoo No muestra un menu si no tiene asociado una accion u otro submenu -->
+    <menuitem id="estate_menu_settings"
+              name="Settings"
+              parent="estate_menu_root"/>
+
+    <!-- Acción -->
+    <menuitem id="estate_menu_properties"
+              name="Properties"
+              parent="estate_menu_config"
+              action="action_estate_property"/>
+
+    <menuitem id="estate_menu_properties_type"
+              name="Property Type"
+              parent="estate_menu_settings"
+              action="action_estate_property_type"/>
+
+    <menuitem id="estate_menu_properties_tag"
+              name="Property Tag"
+              parent="estate_menu_settings"
+              action="action_estate_property_tag"/>
+</odoo>
