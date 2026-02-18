@@ -1,23 +1,28 @@
 <odoo>
     <!-- App -->
+    <!-- El menu root es el que se muestra en la barra lateral, el resto de menus son submenus del menu root -->
     <menuitem id="estate_menu_root" name="Estate"/>
 
     <!-- Tab horizontal -->
+    <!-- Menú de primer nivel, se muestra en la barra superior -->
     <menuitem id="estate_menu_config"
               name="Advertisements"
               parent="estate_menu_root"/>
     
     <!-- Odoo No muestra un menu si no tiene asociado una accion u otro submenu -->
+    <!-- Menú de primer nivel, se muestra en la barra superior -->
     <menuitem id="estate_menu_settings"
               name="Settings"
               parent="estate_menu_root"/>
 
     <!-- Acción -->
+    <!-- Los menus de acciones-->
     <menuitem id="estate_menu_properties"
               name="Properties"
               parent="estate_menu_config"
               action="action_estate_property"/>
 
+    <!-- Menú de acciones -->
     <menuitem id="estate_menu_properties_type"
               name="Property Type"
               parent="estate_menu_settings"
