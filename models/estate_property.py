@@ -74,6 +74,18 @@ class EstateProperty(models.Model):
     )
 
     total_area = fields.Integer(string="Total Area",compute='_compute_total_area')
+    best_price = fields.Float(string="Best Price",compute='_compute_best_price') 
+
+    @api.depends('offer_ids.price')
+    def _compute_best_price(self):
+        """
+            Campo computado que calcula el mejor precio de la propiedad.
+        """
+        for record in self:
+            if record.offer_ids:
+                record.best_price = max(record.offer_ids.mapped('price')) #El metodo mapped se usa para obtener los valores de un campo de un modelo relacionado. En este caso, se obtiene el valor los valores del campo 'price' de todos los registros relacionados con el campo 'offer_ids' en una lista.
+            else:
+                record.best_price = 0
 
     @api.depends('living_area','garden_area')
     def _compute_total_area(self):
