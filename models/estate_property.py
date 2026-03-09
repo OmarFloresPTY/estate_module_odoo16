@@ -20,7 +20,7 @@ class EstateProperty(models.Model):
     garage = fields.Boolean(string="Garage",default=True)
     garden = fields.Boolean(string="Garden",default=True)
     garden_area = fields.Integer(string="QTY Garden Area")
-    garden_orientation = fields.Selection(string="Garden Orientation", 
+    garden_orientation = fields.Selection(string="Garden Orientation",
                                           selection=[("north","North"),
                                            ("south","South"),
                                            ("east","East"),
@@ -43,11 +43,14 @@ class EstateProperty(models.Model):
     )
 
     property_type_id = fields.Many2one(
+        #El campo many2one se usa para relacionar un campo con otro campo de otro modelo
+        #El campo se ve como un dropdown
         "estate.property.type",
         string="Property Type"
     )
 
     tag_ids = fields.Many2many(
+        #El campo se ve como una lista de etiquetas
     'estate.property.tag',
     string="Tags"
     )
@@ -65,6 +68,7 @@ class EstateProperty(models.Model):
     )
 
     offer_ids = fields.One2many(
+        #El campo se ve como una lista de ofertass
         'estate.property.offer',
         'property_id'
     )
