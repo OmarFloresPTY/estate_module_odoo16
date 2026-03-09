@@ -76,6 +76,18 @@ class EstateProperty(models.Model):
     total_area = fields.Integer(string="Total Area",compute='_compute_total_area')
     best_price = fields.Float(string="Best Price",compute='_compute_best_price') 
 
+    @api.onchange('garden') #Los onchange son campos que se actualizan cuando se cambia el valor de otro campo unicamente en la vista form
+    def _onchange_garden(self):
+        """
+            Cambia el valor de garden_area y garden_orientation si garden es True.
+        """
+        if self.garden:
+            self.garden_area = 10
+            self.garden_orientation = 'north'
+        else:
+            self.garden_area = 0
+            self.garden_orientation = None
+
     @api.depends('offer_ids.price')
     def _compute_best_price(self):
         """
