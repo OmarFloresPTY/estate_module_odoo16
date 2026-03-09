@@ -61,65 +61,65 @@
 
         <!--VISTA FORM PROPERTY OFFER-->
     <record id="property_offer_form_view" model="ir.ui.view">
-    <field name="name">property.offer.view.form</field>
-    <field name="model">estate.property.offer</field>
-    <field name="arch" type="xml">
-        <form string="Property Offer">
-            <sheet>
-                <group>
-                    <field name="price"/>
-                    <field name="partner_id"/>
-                    <field name="state"/>
-                </group>
-            </sheet>
-        </form>
-    </field>
+        <field name="name">property.offer.view.form</field>
+        <field name="model">estate.property.offer</field>
+        <field name="arch" type="xml">
+            <form string="Property Offer">
+                <sheet>
+                    <group>
+                        <field name="price"/>
+                        <field name="partner_id"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
     </record>
 
         <!--VISTA FORM PROPERTY TAG-->
     <record id="property_tag_form_view" model="ir.ui.view">
-    <field name="name">property.tag.view.form</field>
-    <field name="model">estate.property.tag</field>
-    <field name="arch" type="xml">
-        <form string="Property Tag">
-            <sheet>
-                <h1>
-                    <field name="name"/>
-                </h1>
-            </sheet>
-        </form>
-    </field>
+        <field name="name">property.tag.view.form</field>
+        <field name="model">estate.property.tag</field>
+        <field name="arch" type="xml">
+            <form string="Property Tag">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </sheet>
+            </form>
+        </field>
     </record>
 
         <!--VISTA FORM PROPERTY TYPE-->
     <record id="property_type_form_view" model="ir.ui.view">
-    <field name="name">property.type.view.form</field>
-    <field name="model">estate.property.type</field>
-    <field name="arch" type="xml">
-        <form string="Property Type">
-            <sheet>
-                <h1>
-                    <field name="name"/>
-                </h1>
-            </sheet>
-        </form>
-    </field>
+        <field name="name">property.type.view.form</field>
+        <field name="model">estate.property.type</field>
+        <field name="arch" type="xml">
+            <form string="Property Type">
+                <sheet>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </sheet>
+            </form>
+        </field>
     </record>
 
         <!--VISTA FORM ESTATE PROPERTY-->
     <record id="estate_property_form_view" model="ir.ui.view">
-    <field name="name">estate.property.view.form</field>
-    <field name="model">estate.property</field>
-    <field  name="arch" type="xml">
-        <form string="Property">
-            <sheet>
+        <field name="name">estate.property.view.form</field>
+        <field name="model">estate.property</field>
+        <field name="arch" type="xml">
+            <form string="Property">
+                <sheet>
 
                 <h1>
                     <field name="name"/>
                 </h1>
 
                 <group>
-                 <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
                     <group>
                         <field name="postcode"/>
                         <field name="date_availability"/>
@@ -132,30 +132,31 @@
 
                     <notebook>
                         <page string="Descriptions">
-                        <group>
                             <group>
-                                <field name="description"/>
-                                <field name="bedrooms"/>
-                                <field name="living_area"/>
-                                <field name="facades"/>
-                                <field name="state"/>
-                                <field name="property_type_id"/>
-                            </group>
+                                <group>
+                                    <field name="description"/>
+                                    <field name="bedrooms"/>
+                                    <field name="living_area"/>
+                                    <field name="garden_area"/>
+                                    <field name="total_area"/>
+                                    <field name="state"/>
+                                    <field name="property_type_id"/>
+                                </group>
 
-                            <group>
-                                <field name="garage"/>
-                                <field name="garden"/>
-                                <field name="garden_area"/>
-                                <field name="garden_orientation"/>
+                                <group>
+                                    <field name="garage"/>
+                                    <field name="garden"/>
+                                    <field name="facades"/>
+                                    <field name="garden_orientation"/>
+                                </group>
                             </group>
-                        </group>
                         </page>
 
                         <page string="Offers">
                             <field name="offer_ids"/>
                         </page>
 
-                        <page string="Other info">+
+                        <page string="Other info">
                             <group>
                                 <field name="seller_id"/>
                                 <field name="buyer_id"/>

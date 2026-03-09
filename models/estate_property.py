@@ -72,6 +72,16 @@ class EstateProperty(models.Model):
         'estate.property.offer',
         'property_id'
     )
+
+    total_area = fields.Integer(string="Total Area",compute='_compute_total_area')
+
+    @api.depends('living_area','garden_area')
+    def _compute_total_area(self):
+        """
+            Campo computado que calcula el area total de la propiedad.
+        """
+        for record in self:
+            record.total_area = record.living_area + record.garden_area
     
     @api.constrains('date_availability')
     def _check_date_availability(self):
