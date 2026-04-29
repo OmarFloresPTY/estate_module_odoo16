@@ -1,7 +1,6 @@
-from odoo import models, fields
+from odoo import models, fields, api
 from dateutil.relativedelta import relativedelta
-from odoo import api
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 class EstateProperty(models.Model):
     _name = 'estate.property'
@@ -112,3 +111,15 @@ class EstateProperty(models.Model):
         for record in self:
             if record.date_availability < fields.Date.context_today(self):
                 raise ValidationError("La fecha no puede ser anterior a hoy.")
+    
+    def action_sold(self):
+        for record in self:
+            if record.state == 'canceled':
+                raise UserError("Una propiedad cancelada no puede ser marcada como vendida.")
+            record.state = 'sold'
+
+    def action_cancel(self):
+        for record in self:
+            if record.state == 'sold':
+                raise UserError("Una propiedad vendida no puede ser cancelada.")
+            record.state = 'canceled'
