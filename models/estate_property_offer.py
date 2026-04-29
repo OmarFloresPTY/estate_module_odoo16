@@ -1,5 +1,6 @@
 from odoo import models, fields, api
 from datetime import timedelta
+from odoo.exceptions import ValidationError, UserError
 
 class EstatePropertyOffer(models.Model):
     _name = 'estate.property.offer'
@@ -44,4 +45,11 @@ class EstatePropertyOffer(models.Model):
         string="Estate Property",
         required=True
     )
+    
+    def action_accept(self):
+        for record in self:
+            record.state = 'accepted'
 
+    def action_refuse(self):
+        for record in self:
+            record.state = 'refused'
